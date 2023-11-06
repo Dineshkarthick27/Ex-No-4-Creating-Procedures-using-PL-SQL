@@ -1,4 +1,4 @@
-# Ex-No-4-Creating-Procedures-using-PL-SQ
+# Ex. No: 4 Creating Procedures using PL/SQL
 
 ### AIM: To create a procedure using PL/SQL.
 
@@ -11,11 +11,32 @@
 6. Display the employee table
 
 ### Program:
-![image](https://github.com/Dineshkarthick27/Ex-No-4-Creating-Procedures-using-PL-SQL/assets/120552008/d4cc4f7c-3b35-4913-8b1a-02288219bd45)
+```
+CREATE TABLE empq(
+  2          empid NUMBER,
+  3          empname VARCHAR(10),
+  4          dept VARCHAR(10),
+  5          salary NUMBER
+  6          );
 
-
+SQL> CREATE OR REPLACE PROCEDURE emp_data AS
+        BEGIN      INSERT INTO empq(empid,empname,dept,salary)
+        values(1,'dinesh','MD',10000000);
+        INSERT INTO empq(empid,empname,dept,salary)
+        values(2,'rathish','HR',500000);
+        INSERT INTO empq(empid,empname,dept,salary)
+        values(3,'faizal','IT',200000);
+        COMMIT;
+      FOR emp_rec IN (SELECT * FROM empq)LOOP
+      DBMS_OUTPUT.PUT_LINE('EMPLOYEE ID:'||emp_rec.empid||',EMPLOYEE NAME:'|| emp_rec.empname||
+      ',DEPARTMENT:'||emp_rec.dept||',SALARY:'||emp_rec.salary);
+      END LOOP;
+      END;
+     /
+ ```
 ### Output:
-![image](https://github.com/Dineshkarthick27/Ex-No-4-Creating-Procedures-using-PL-SQL/assets/120552008/76161c43-aaf3-4589-998f-3839c46917b1)
+![image](https://github.com/JivanKarthick/Ex-No-4-Creating-Procedures-using-PL-SQL/assets/121165867/765d065b-7cc8-40ec-8ce5-d5defb99b915)
+
 
 
 ### Result:
